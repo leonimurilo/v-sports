@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { Link } from 'react-router-dom';
 
 // import {
 // } from 'selectors/';
@@ -18,17 +17,17 @@ const enhance = compose(
   // }))
 );
 
-class HomePage extends Component {
+class UsersPage extends Component {
   static propTypes = {
   };
 
   render() {
     return (
       <div>
-        <Link to="users">View users list</Link>
+        list here
       </div>
     )
   }
 }
 
-export default enhance(HomePage);
+export default enhance(UsersPage);
