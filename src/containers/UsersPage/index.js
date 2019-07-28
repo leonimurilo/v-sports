@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { getUsers } from 'actions/users';
 import { selectUserList } from 'reducers';
+import Table from 'components/Table';
 
-// import {
-// } from 'selectors/';
+import columns from './columns';
 
 import './style.scss';
 
@@ -30,9 +30,14 @@ class UsersPage extends Component {
   }
 
   render() {
+    const { userList } = this.props;
     return (
       <div>
-        {this.props.userList.map(item => <p key={item.email}>{item.email}</p>)}
+        <Table
+          columns={columns}
+          data={userList}
+          keyField="email"
+        />
       </div>
     )
   }
