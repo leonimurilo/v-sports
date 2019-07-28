@@ -1,7 +1,8 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { compose } from 'recompose';
+import { getUsers } from 'actions/users';
 
 // import {
 // } from 'selectors/';
@@ -12,14 +13,19 @@ const enhance = compose(
   // connect(state => ({
     // selectors
   // })),
-  // connect(null, (dispatch, { geolocation }) => ({
-    // action creators
-  // }))
+  connect(null, dispatch => ({
+    getUsers: () => dispatch(getUsers.request()),
+  }))
 );
 
 class UsersPage extends Component {
   static propTypes = {
+    getUsers: PropTypes.func.isRequired,
   };
+
+  componentDidMount() {
+    this.props.getUsers();
+  }
 
   render() {
     return (
