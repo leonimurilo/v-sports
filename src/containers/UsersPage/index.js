@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { getUsers } from 'actions/users';
+import { selectUserList } from 'reducers';
 
 // import {
 // } from 'selectors/';
@@ -10,9 +11,9 @@ import { getUsers } from 'actions/users';
 import './style.scss';
 
 const enhance = compose(
-  // connect(state => ({
-    // selectors
-  // })),
+  connect(state => ({
+    userList: selectUserList(state)
+  })),
   connect(null, dispatch => ({
     getUsers: () => dispatch(getUsers.request()),
   }))
@@ -21,6 +22,7 @@ const enhance = compose(
 class UsersPage extends Component {
   static propTypes = {
     getUsers: PropTypes.func.isRequired,
+    userList: PropTypes.array.isRequired //todo: add shaped proptype
   };
 
   componentDidMount() {
@@ -30,7 +32,7 @@ class UsersPage extends Component {
   render() {
     return (
       <div>
-        list here
+        {this.props.userList.map(item => <p key={item.email}>{item.email}</p>)}
       </div>
     )
   }
