@@ -1,7 +1,11 @@
+// needed for es6 generstor support
+import '@babel/polyfill';
+
 import React from "react";
 import { render } from "react-dom";
 import { AppContainer } from "react-hot-loader";
 import createHistory from "history/createBrowserHistory";
+import rootSaga from 'sagas';
 import configureStore from './store/configureStore';
 import Root from "./components/Root";
 import "styles/main.sass";
@@ -9,6 +13,8 @@ require("./favicon.ico"); // Tell webpack to load favicon.ico
 
 const {store, persistor} = configureStore();
 const history = createHistory();
+
+store.runSaga(rootSaga);
 
 render(
   <AppContainer>
