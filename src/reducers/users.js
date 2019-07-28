@@ -15,7 +15,7 @@ export default function(state = defaultState, action) {
       return ({
         ...state,
         isLoading: false,
-        users: action.payload.users
+        users: action.payload.data
       });
     }
     case actionTypes.GET_USERS.failure: {
