@@ -1,0 +1,39 @@
+.button {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 1.8rem;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1.8rem;
+    padding-right: 1.8rem;
+    height: 3.8rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: $color-primary;
+    color: #fff;
+    border-radius: 3rem;
+    transition: .3s ease;
+    text-decoration: none;
+    line-height: 1.6rem;
+
+    &:hover {
+      background-color: lighten($color-primary, 10%);
+    }
+
+    &--large {
+      padding-left: 3.4rem;
+      padding-right: 3.4rem;
+      height: 5rem;
+    }
+
+    &--sec {
+      background-color: $color-secondary;
+
+      &:hover {
+        background-color: lighten($color-secondary, 10%);
+      }
+    }
+}

@@ -1,0 +1,49 @@
+*, *::after, *::before
+  margin: 0
+  padding: 0
+  box-sizing: inherit
+
+#app
+  height: 100%
+  width: 100%
+  background-color: white
+
+// Could be in typography file, but since it acts more like an overall setting
+// of how we size the entire pages it makes more sense to put it in here
+
+// Good order to do the media queries:
+// base and Typography -> general layout and grid -> page layout ->  components
+html
+  height: 100%
+  //defines what 1rem is:
+  // usually 10px
+  font-size: 62.5%
+
+  +respond(tab-land)
+    // 9px
+    font-size: 56.25%
+
+  +respond(tab-port)
+    // 10px:
+    font-size: 56.25%
+
+  +respond(big-desktop)
+    // 12px
+    font-size: 75%
+
+
+
+*::-moz-focus-inner
+  border: 0
+
+
+
+body
+  height: 100%
+  box-sizing: border-box
+
+  +respond(tab-port)
+    padding: 0
+
+li
+    list-style-type: none !important
