@@ -7,12 +7,13 @@ import { selectUserList } from 'reducers';
 import Table from 'components/Table';
 
 import columns from './columns';
+import { normalizeUserData } from './utils';
 
 import './style.scss';
 
 const enhance = compose(
   connect(state => ({
-    userList: selectUserList(state)
+    userList: selectUserList(state).map(user => normalizeUserData(user))
   })),
   connect(null, dispatch => ({
     getUsers: () => dispatch(getUsers.request()),

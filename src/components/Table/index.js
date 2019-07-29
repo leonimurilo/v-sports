@@ -15,7 +15,13 @@ export default class Table extends Component {
 
   renderRow = rowData => {
     const { columns, keyField } = this.props;
-    return columns.map(c => (<td key={`${rowData[keyField]}->${c.acessor}`}>{rowData[c.acessor]}</td>));
+    return columns.map(c => (
+      <td
+        key={`${rowData[keyField]}->${c.acessor}`}
+      >
+        {c.render ? c.render(rowData[c.acessor], rowData) : rowData[c.acessor]}
+      </td>
+    ));
   }
 
   renderRows = () => {
