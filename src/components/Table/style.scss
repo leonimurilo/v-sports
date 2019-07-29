@@ -22,10 +22,10 @@
   &__row {
     transition: .2s ease all;
     &--dark {
-      background-color: #f8f8f8;
+      background-color: $color-gray-light;
     }
     &:hover {
-      background-color: #e3e3e3;
+      background-color: $color-gray;
     }
   }
 
