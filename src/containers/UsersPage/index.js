@@ -33,7 +33,7 @@ class UsersPage extends Component {
   render() {
     const { userList } = this.props;
     return (
-      <div>
+      <div className="users-page">
         <Table
           columns={columns}
           data={userList}

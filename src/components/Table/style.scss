@@ -1,0 +1,38 @@
+@import '../../styles/main';
+
+.table {
+  font-size: 1.6rem;
+  border-collapse:collapse;
+
+  &__body {
+
+  }
+
+  &__header {
+    border-bottom: 1px solid black;
+  }
+
+  &__header-item {
+    text-align: left;
+    padding: 2rem;
+    white-space: nowrap;
+    font-weight: normal;
+  }
+
+  &__row {
+    transition: .2s ease all;
+    &--dark {
+      background-color: #f8f8f8;
+    }
+    &:hover {
+      background-color: #e3e3e3;
+    }
+  }
+
+  &__cell {
+    padding: 8px;
+    padding: 2rem;
+    padding-right: 3rem;
+    white-space: nowrap;
+  }
+}
