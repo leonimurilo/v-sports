@@ -15,6 +15,7 @@ export default [
   {
     header: 'E-mail',
     acessor: 'email',
+    render: email => (<a href={`mailto:${email}`}>{email}</a>)
   },
   {
     header: 'City',
