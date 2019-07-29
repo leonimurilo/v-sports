@@ -5,9 +5,8 @@ import { compose } from 'recompose';
 import { getUsers } from 'actions/users';
 import { selectUserList } from 'reducers';
 import Table from 'components/Table';
+import SportInfo from 'components/SportInfo';
 import Breadcrumbs from 'components/Breadcrumbs';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVolleyballBall } from '@fortawesome/free-solid-svg-icons';
 
 
 import columns from './columns';
@@ -39,7 +38,7 @@ class UsersPage extends Component {
     return (
       <div className="users-page">
         <Breadcrumbs items={[]}/>
-        <FontAwesomeIcon icon={faVolleyballBall} />
+        <SportInfo type="Cycling" mode="Advanced" route="30 miles"/>
 
         <div className="users-page__table-wrapper">
           <Table
