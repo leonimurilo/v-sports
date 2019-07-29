@@ -6,15 +6,19 @@ import Header from "components/Header";
 import HomePage from "containers/HomePage";
 import UsersPage from "containers/UsersPage";
 
+import './style.scss';
+
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className="app">
         <Header />
-        <Switch>
-          <Route component={HomePage} exact path="/" />
-          <Route component={UsersPage} path="/users" />
-        </Switch>
+        <div className="page-container">
+          <Switch>
+            <Route component={HomePage} exact path="/" />
+            <Route component={UsersPage} path="/users" />
+          </Switch>
+        </div>
       </div>
     );
   }
