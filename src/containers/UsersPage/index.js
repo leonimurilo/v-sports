@@ -37,7 +37,7 @@ class UsersPage extends Component {
     const { userList } = this.props;
     return (
       <div className="users-page">
-        <Breadcrumbs items={[]}/>
+        <Breadcrumbs items={[{ text: 'Current page'}]}/>
         <SportInfo type="Cycling" mode="Advanced" route="30 miles"/>
 
         <div className="users-page__table-wrapper">
