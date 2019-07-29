@@ -6,6 +6,9 @@ import { getUsers } from 'actions/users';
 import { selectUserList } from 'reducers';
 import Table from 'components/Table';
 import Breadcrumbs from 'components/Breadcrumbs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVolleyballBall } from '@fortawesome/free-solid-svg-icons';
+
 
 import columns from './columns';
 import { normalizeUserData } from './utils';
@@ -36,6 +39,8 @@ class UsersPage extends Component {
     return (
       <div className="users-page">
         <Breadcrumbs items={[]}/>
+        <FontAwesomeIcon icon={faVolleyballBall} />
+
         <div className="users-page__table-wrapper">
           <Table
             columns={columns}

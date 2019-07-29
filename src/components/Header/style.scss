@@ -30,4 +30,20 @@
     padding: .8rem;
   }
 
+  &__logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__logo-icon {
+    display: flex;
+    font-size: 2.6rem;
+    background-color: $color-primary;
+    border-radius: 4px;
+    padding: 6px;
+    margin-right: 1rem;
+    color: white;
+  }
+
 }
