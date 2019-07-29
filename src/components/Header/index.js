@@ -16,12 +16,6 @@ class Header extends Component {
             Leoni Murilo de Lima
           </div>
         </nav>
-        <nav className="header__nav-sec">
-          <ul className="header__breadcrumbs">
-            <li><a href="#">Home</a></li>
-            <li>Users</li>
-          </ul>
-        </nav>
       </header>
     )
   }

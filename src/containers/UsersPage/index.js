@@ -5,6 +5,7 @@ import { compose } from 'recompose';
 import { getUsers } from 'actions/users';
 import { selectUserList } from 'reducers';
 import Table from 'components/Table';
+import Breadcrumbs from 'components/Breadcrumbs';
 
 import columns from './columns';
 import { normalizeUserData } from './utils';
@@ -34,11 +35,14 @@ class UsersPage extends Component {
     const { userList } = this.props;
     return (
       <div className="users-page">
-        <Table
-          columns={columns}
-          data={userList}
-          keyField="email"
-        />
+        <Breadcrumbs items={[]}/>
+        <div className="users-page__table-wrapper">
+          <Table
+            columns={columns}
+            data={userList}
+            keyField="email"
+          />
+        </div>
       </div>
     )
   }
