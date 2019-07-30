@@ -1,4 +1,4 @@
-import { GET_USERS } from 'constants/actionTypes';
+import { GET_USERS, REMOVE_USER } from 'constants/actionTypes';
 import { createAction } from './utils';
 
 export const getUsers = {
@@ -6,3 +6,5 @@ export const getUsers = {
   success: data => createAction(GET_USERS.success, { data }),
   failure: error => createAction(GET_USERS.failure, { error }),
 }
+
+export const removeUser = email => createAction(REMOVE_USER, { email });

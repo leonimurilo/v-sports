@@ -6,3 +6,5 @@ const createRequestTypes = base => ({
 });
 
 export const GET_USERS = createRequestTypes("GET_USERS");
+export const REMOVE_USER = "REMOVE_USER";
+

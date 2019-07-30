@@ -25,6 +25,13 @@ export default function(state = defaultState, action) {
         error: action.payload.error
       });
     }
+    case actionTypes.REMOVE_USER: {
+      const userToDelete = action.payload.email;
+      return ({
+        ...state,
+        users: state.users.filter(user => user.email !== userToDelete),
+      });
+    }
     default:
       return state;
   }

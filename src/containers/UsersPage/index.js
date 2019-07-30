@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { getUsers } from 'actions/users';
+import { getUsers, removeUser } from 'actions/users';
 import { selectUserList } from 'reducers';
 import Table from 'components/Table';
 import SportInfo from 'components/SportInfo';
@@ -20,13 +20,15 @@ const enhance = compose(
   })),
   connect(null, dispatch => ({
     getUsers: () => dispatch(getUsers.request()),
+    removeUser: email => dispatch(removeUser(email)),
   }))
 );
 
 class UsersPage extends Component {
   static propTypes = {
     getUsers: PropTypes.func.isRequired,
-    userList: PropTypes.array.isRequired //todo: add shaped proptype
+    userList: PropTypes.array.isRequired, //todo: add shaped proptype
+    removeUser: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -41,12 +43,13 @@ class UsersPage extends Component {
         <SportInfo type="Cycling" mode="Advanced" route="30 miles"/>
 
         <div className="users-page__table-wrapper">
+          {/* I could have used an external library like react-table */}
           <Table
             columns={columns}
             data={userList}
             keyField="email"
-            onRemove={(data, index) => {
-              console.log({ data, index });
+            onRemove={(data) => {
+              this.props.removeUser(data.email);
             }}
           />
         </div>
