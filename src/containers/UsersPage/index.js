@@ -7,7 +7,7 @@ import { selectUserList } from 'reducers';
 import Table from 'components/Table';
 import SportInfo from 'components/SportInfo';
 import Breadcrumbs from 'components/Breadcrumbs';
-
+import AddUser from 'containers/AddUser';
 
 import columns from './columns';
 import { normalizeUserData } from './utils';
@@ -53,6 +53,7 @@ class UsersPage extends Component {
             }}
           />
         </div>
+        <AddUser/>
       </div>
     )
   }

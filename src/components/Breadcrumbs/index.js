@@ -20,9 +20,10 @@ export default class Breadcrumbs extends Component {
       return (<li key={`${item.text}${i}`}>{item.text}</li>);
     });
     const finalItems = [];
-    renderedItems.forEach(i => {
-      finalItems.push(<FontAwesomeIcon className="breadcrumbs__arrow" icon={faChevronRight} />);
-      finalItems.push(i);
+    renderedItems.forEach((item, index) => {
+      // In this case, not a big problem to use index as key
+      finalItems.push(<FontAwesomeIcon key={`${index}`} className="breadcrumbs__arrow" icon={faChevronRight} />);
+      finalItems.push(item);
     });
     return finalItems;
   }
