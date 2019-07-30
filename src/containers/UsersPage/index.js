@@ -45,7 +45,9 @@ class UsersPage extends Component {
             columns={columns}
             data={userList}
             keyField="email"
-            onRemove={() => {}}
+            onRemove={(data, index) => {
+              console.log({ data, index });
+            }}
           />
         </div>
       </div>

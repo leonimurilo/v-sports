@@ -22,7 +22,7 @@ export default class Table extends Component {
     return cols;
   }
 
-  renderRow = rowData => {
+  renderRow = (rowData, index) => {
     const { columns, onRemove, keyField } = this.props;
     const row = columns.map(c => (
       <td
@@ -34,7 +34,7 @@ export default class Table extends Component {
     ));
 
     if (onRemove) {
-      return [...row, <td key="td__removable"><FontAwesomeIcon className="table__trash" title="Remove" icon={faTrashAlt} /></td>];
+      return [...row, <td key="td__removable"><FontAwesomeIcon onClick={() => { onRemove(rowData, index); }} className="table__trash" title="Remove" icon={faTrashAlt} /></td>];
     }
     return row;
   }
@@ -46,7 +46,7 @@ export default class Table extends Component {
         className={`table__row ${index % 2 === 0 ? '' : 'table__row--dark'}`}
         key={rowData[keyField]}
       >
-        {this.renderRow(rowData)}
+        {this.renderRow(rowData, index)}
       </tr>
     ));
   }
