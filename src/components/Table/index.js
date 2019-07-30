@@ -9,7 +9,7 @@ export default class Table extends Component {
     columns: PropTypes.array.isRequired, // could use custom proptype function to check for duplicate column names and more
     data: PropTypes.array.isRequired,
     keyField: PropTypes.string.isRequired,
-    onRemove: PropTypes.bool.isRequired,
+    onRemove: PropTypes.func.isRequired,
   }
 
   renderHeaders = () => {
