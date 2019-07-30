@@ -26,6 +26,10 @@
     }
     &:hover {
       background-color: $color-gray;
+
+      & .table__trash {
+        display: inline;
+      }
     }
   }
 
@@ -34,5 +38,11 @@
     padding: 2rem;
     padding-right: 3rem;
     white-space: nowrap;
+  }
+
+  &__trash {
+    cursor: pointer;
+    color: $color-primary;
+    display: none;
   }
 }

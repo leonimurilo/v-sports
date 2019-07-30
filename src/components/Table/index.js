@@ -1,22 +1,30 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import './style.scss';
 
 export default class Table extends Component {
   static propTypes = {
-    columns: PropTypes.array.isRequired, // could use custom function to check for duplicate column names and more
+    columns: PropTypes.array.isRequired, // could use custom proptype function to check for duplicate column names and more
     data: PropTypes.array.isRequired,
     keyField: PropTypes.string.isRequired,
+    onRemove: PropTypes.bool.isRequired,
   }
 
   renderHeaders = () => {
-    const { columns } = this.props;
-    return columns.map(c => (<th className="table__header-item" key={c.acessor}>{c.header || c.acessor}</th>));
+    const { columns, onRemove } = this.props;
+    const cols = columns.map(c => (<th className="table__header-item" key={c.acessor}>{c.header || c.acessor}</th>));
+
+    if (onRemove) {
+      return [...cols, <th className="table__header-item" key="__removable__"></th>]
+    }
+    return cols;
   }
 
   renderRow = rowData => {
-    const { columns, keyField } = this.props;
-    return columns.map(c => (
+    const { columns, onRemove, keyField } = this.props;
+    const row = columns.map(c => (
       <td
         className="table__cell"
         key={`${rowData[keyField]}->${c.acessor}`}
@@ -24,6 +32,11 @@ export default class Table extends Component {
         {c.render ? c.render(rowData[c.acessor], rowData) : rowData[c.acessor]}
       </td>
     ));
+
+    if (onRemove) {
+      return [...row, <td key="td__removable"><FontAwesomeIcon className="table__trash" title="Remove" icon={faTrashAlt} /></td>];
+    }
+    return row;
   }
 
   renderRows = () => {
