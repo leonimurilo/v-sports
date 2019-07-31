@@ -36,12 +36,16 @@
   &__btn {
     height: 2.4rem;
     width: 2.4rem;
-    border: 1px solid $color-primary;
+    border: 1px solid $color-gray;
     border-radius: 6px;
     display: inline-block;
     position: absolute;
     left: 0;
     top: -.4rem;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
 
     &::after {
       content: "";
@@ -73,6 +77,10 @@
 
   &__input:checked ~ &__label &__btn::after {
     opacity: 1;
+  }
+
+  &__label:hover > &__btn {
+    border: 1px solid $color-primary;
   }
 
 }
