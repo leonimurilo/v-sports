@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Formik, Field } from 'formik';
 import { Checkbox, CheckboxGroup } from 'components/Checkbox';
 import { RadioButton, RadioButtonGroup } from 'components/RadioButton';
+import TextInput from 'components/TextInput';
 
 import './style.scss';
 
@@ -94,32 +95,30 @@ export default class AddUser extends Component {
             <form onSubmit={handleSubmit}>
               <div>
                 <div>
-                  <input
-                    type="text"
+                  <TextInput
                     name="username"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.username}
+                    errors={errors}
+                    touched={touched}
                   />
-                  {errors.username && touched.username && errors.username}
-
-                  <input
-                    type="text"
+                  <TextInput
                     name="name"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
+                    errors={errors}
+                    touched={touched}
                   />
-                  {errors.name && touched.name && errors.name}
-
-                  <input
-                    type="email"
+                  <TextInput
                     name="email"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
+                    errors={errors}
+                    touched={touched}
                   />
-                  {errors.email && touched.email && errors.email}
                 </div>
                 <div>
                   <input
@@ -156,8 +155,8 @@ export default class AddUser extends Component {
               </div>
 
               <div>
-              <button type="submit" disabled={isSubmitting}>Submit</button>
-              <button type="button" disabled={isSubmitting} onClick={handleReset}>Discard</button>
+              <button className="button" type="submit" disabled={isSubmitting}>Submit</button>
+              <button className="button" type="button" disabled={isSubmitting} onClick={handleReset}>Discard</button>
               </div>
             </form>
           )}
