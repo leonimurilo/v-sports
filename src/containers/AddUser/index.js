@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { Formik } from 'formik';
+import RadioButton from 'components/RadioButton';
 
 import './style.scss';
 
@@ -26,7 +27,13 @@ export default class AddUser extends Component {
     return (
       <div className="add-user">
         <Formik
-          initialValues={{ email: '', name: '', username: '', city: '' }}
+          initialValues={{
+            email: '',
+            name: '',
+            username: '',
+            city: '',
+            rideInGroup: 'Always',
+          }}
           validate={this.validateFields}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
@@ -42,6 +49,7 @@ export default class AddUser extends Component {
             handleChange,
             handleBlur,
             handleSubmit,
+            handleReset,
             isSubmitting,
           }) => (
             <form onSubmit={handleSubmit}>
@@ -84,12 +92,9 @@ export default class AddUser extends Component {
                   />
                   {errors.city && touched.city && errors.city}
 
-                  <input id="r1" type="radio" name="rideInGroup" value="Always" defaultChecked/>
-                  <label htmlFor="r1"> button one</label>
-                  <input id="r2" type="radio" name="rideInGroup" value="Sometimes"/>
-                  <label htmlFor="r2"> button one</label>
-                  <input id="r3" type="radio" name="rideInGroup" value="Never"/>
-                  <label htmlFor="r3"> button one</label>
+                  <RadioButton inputProps={ { defaultChecked: true, onChange: handleChange, onBlur: handleBlur } } value="Always" label="Always" name="rideInGroup"/>
+                  <RadioButton inputProps={ { onChange: handleChange, onBlur: handleBlur } } value="Sometimes" label="Sometimes" name="rideInGroup"/>
+                  <RadioButton inputProps={ { onChange: handleChange, onBlur: handleBlur } } value="Never" label="Never" name="rideInGroup"/>
 
                   <input id="c1" type="checkbox" name="dayOfWeek" value="Sun"/>
                   <label htmlFor="c1">Sun</label>
@@ -110,7 +115,7 @@ export default class AddUser extends Component {
 
               <div>
               <button type="submit" disabled={isSubmitting}>Submit</button>
-              <button type="button" disabled={isSubmitting}>Discard</button>
+              <button type="button" disabled={isSubmitting} onClick={handleReset}>Discard</button>
               </div>
             </form>
           )}
