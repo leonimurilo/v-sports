@@ -1,15 +1,51 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { Formik } from 'formik';
-import RadioButton from 'components/RadioButton';
+import { Formik, Field } from 'formik';
+import { Checkbox, CheckboxGroup } from 'components/Checkbox';
+import { RadioButton, RadioButtonGroup } from 'components/RadioButton';
 
 import './style.scss';
 
+const daysOptions = [
+  {value: 'Sun', label: 'Sun'},
+  {value: 'Mon', label: 'Mon'},
+  {value: 'Tue', label: 'Tue'},
+  {value: 'Wed', label: 'Wed'},
+  {value: 'Thu', label: 'Thu'},
+  {value: 'Fri', label: 'Fri'},
+  {value: 'Sat', label: 'Sat'},
+];
+
+const rideOptions = [
+  {value: 'Always', label: 'Always'},
+  {value: 'Sometimes', label: 'Sometimes'},
+  {value: 'Never', label: 'Never'},
+];
 
 export default class AddUser extends Component {
 
   renderRideInGroup = () => {
+    return rideOptions.map(opt => (
+      <Field
+        key={opt.value}
+        component={RadioButton}
+        name="rideInGroup"
+        id={opt.value}
+        label={opt.label}
+      />
+    ))
+  }
 
+  renderDaysOfWeek = () => {
+    return daysOptions.map(opt => (
+      <Field
+        key={opt.value}
+        component={Checkbox}
+        name="dayOfWeek"
+        id={opt.value}
+        label={opt.label}
+      />
+    ))
   }
   validateFields = values => {
     let errors = {};
@@ -33,6 +69,7 @@ export default class AddUser extends Component {
             username: '',
             city: '',
             rideInGroup: 'Always',
+            dayOfWeek: ['Sun'],
           }}
           validate={this.validateFields}
           onSubmit={(values, { setSubmitting }) => {
@@ -51,6 +88,8 @@ export default class AddUser extends Component {
             handleSubmit,
             handleReset,
             isSubmitting,
+            setFieldTouched,
+            setFieldValue,
           }) => (
             <form onSubmit={handleSubmit}>
               <div>
@@ -92,24 +131,27 @@ export default class AddUser extends Component {
                   />
                   {errors.city && touched.city && errors.city}
 
-                  <RadioButton inputProps={ { defaultChecked: true, onChange: handleChange, onBlur: handleBlur } } value="Always" label="Always" name="rideInGroup"/>
-                  <RadioButton inputProps={ { onChange: handleChange, onBlur: handleBlur } } value="Sometimes" label="Sometimes" name="rideInGroup"/>
-                  <RadioButton inputProps={ { onChange: handleChange, onBlur: handleBlur } } value="Never" label="Never" name="rideInGroup"/>
+                  <RadioButtonGroup
+                    id="rideInGroup"
+                    label="Ride in group?"
+                    value={values.rideInGroup}
+                    error={errors.rideInGroup}
+                    touched={touched.rideInGroup}
+                  >
+                    {this.renderRideInGroup()}
+                  </RadioButtonGroup>
 
-                  <input id="c1" type="checkbox" name="dayOfWeek" value="Sun"/>
-                  <label htmlFor="c1">Sun</label>
-                  <input id="c2" type="checkbox" name="dayOfWeek" value="Mon"/>
-                  <label htmlFor="c2">Mon</label>
-                  <input id="c3" type="checkbox" name="dayOfWeek" value="Tue"/>
-                  <label htmlFor="c3">Tue</label>
-                  <input id="c4" type="checkbox" name="dayOfWeek" value="Wed"/>
-                  <label htmlFor="c4">Wed</label>
-                  <input id="c5" type="checkbox" name="dayOfWeek" value="Thu"/>
-                  <label htmlFor="c5">Thu</label>
-                  <input id="c6" type="checkbox" name="dayOfWeek" value="Fri"/>
-                  <label htmlFor="c6">Fri</label>
-                  <input id="c7" type="checkbox" name="dayOfWeek" value="Sat"/>
-                  <label htmlFor="c7">Sat</label>
+                  <CheckboxGroup
+                    id="dayOfWeek"
+                    label="Days of the week"
+                    value={values.dayOfWeek}
+                    error={errors.dayOfWeek}
+                    touched={touched.dayOfWeek}
+                    onChange={setFieldValue}
+                    onBlur={setFieldTouched}
+                  >
+                    {this.renderDaysOfWeek()}
+                  </CheckboxGroup>
                 </div>
               </div>
 
