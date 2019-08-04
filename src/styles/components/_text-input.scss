@@ -33,4 +33,8 @@
   color: lighten($color-gray-dark, 15%);
   font-size: 1.2rem;
   margin-top: 6px;
+
+  &--error {
+    color: red;
+  }
 }
