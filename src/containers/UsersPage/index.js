@@ -13,6 +13,8 @@ import AddUser from 'containers/AddUser';
 import columns from './columns';
 import { normalizeUserData } from './utils';
 
+const simpleColumns = columns.reduce((acc, item) => ([...acc, item.acessor]), []);
+
 import './style.scss';
 
 const enhance = compose(
@@ -36,17 +38,47 @@ class UsersPage extends Component {
     isLoading: PropTypes.bool.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      filter: '',
+    }
+  }
+
   componentDidMount() {
     this.props.getUsers();
   }
 
+  filterUserList = (list, filter) => {
+    return list.filter(user => {
+      for(let index in simpleColumns) {
+        const column = simpleColumns[index];
+        if (user[column] && (typeof user[column] === 'string' || user[column].toString) && user[column].toString().toUpperCase().indexOf(filter.toUpperCase()) >= 0) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }
+
   render() {
     const { userList, isLoading } = this.props;
+    const { filter } = this.state;
 
     return (
       <div className="users-page">
         <Breadcrumbs items={[{ text: 'Current page'}]}/>
         <SportInfo type="Cycling" mode="Advanced" route="30 miles"/>
+        <div className="text-input">
+          <input
+            type="text"
+            name={name}
+            className="text-input__input"
+            onChange={e => { this.setState({ filter: e.target.value })}}
+            value={filter}
+          />
+
+        </div>
 
         <div className="users-page__table-wrapper">
           {
@@ -55,7 +87,7 @@ class UsersPage extends Component {
             /* I could have used an external library like react-table */
             <Table
               columns={columns}
-              data={userList}
+              data={filter ? this.filterUserList(userList, filter) : userList}
               keyField="email"
               onRemove={(data) => {
                 this.props.removeUser(data.email);
