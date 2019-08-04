@@ -31,7 +31,7 @@ class TextInput extends React.Component {
         <input
           type="text"
           name={name}
-          className="text-input__input"
+          className={touched[name] && errors[name] ? 'text-input__input text-input__input--error' : 'text-input__input'}
           onChange={onChange}
           onFocus={this.handleFocus}
           onBlur={this.handleBlur}
@@ -40,7 +40,6 @@ class TextInput extends React.Component {
         />
 
         <InputInstruction showInstruction={showInstruction} instruction={instruction} touched={touched[name]} error={errors[name]}/>
-        {/* {errors[name] && touched[name] && } */}
       </div>
     );
   }
