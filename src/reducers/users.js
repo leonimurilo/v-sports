@@ -25,6 +25,12 @@ export default function(state = defaultState, action) {
         error: action.payload.error
       });
     }
+    case actionTypes.ADD_USER: {
+      return ({
+        ...state,
+        users: [...state.users, action.payload.user]
+      });
+    }
     case actionTypes.REMOVE_USER: {
       const userToDelete = action.payload.email;
       return ({
