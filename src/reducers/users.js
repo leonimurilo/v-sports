@@ -44,3 +44,4 @@ export default function(state = defaultState, action) {
 }
 
 export const selectUserList = state => state.users;
+export const isLoading = state => state.isLoading;

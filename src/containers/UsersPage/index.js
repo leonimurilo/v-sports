@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
 import { getUsers, removeUser, addUser } from 'actions/users';
-import { selectUserList } from 'reducers';
+import { selectUserList, isLoadingSelector } from 'reducers';
 import Table from 'components/Table';
 import SportInfo from 'components/SportInfo';
 import Breadcrumbs from 'components/Breadcrumbs';
+import Loading from 'components/Loading';
 import AddUser from 'containers/AddUser';
 
 import columns from './columns';
@@ -16,7 +17,8 @@ import './style.scss';
 
 const enhance = compose(
   connect(state => ({
-    userList: selectUserList(state).map(user => normalizeUserData(user))
+    userList: selectUserList(state).map(user => normalizeUserData(user)),
+    isLoading: isLoadingSelector(state),
   })),
   connect(null, dispatch => ({
     getUsers: () => dispatch(getUsers.request()),
@@ -31,6 +33,7 @@ class UsersPage extends Component {
     userList: PropTypes.array.isRequired, //todo: add shaped proptype
     removeUser: PropTypes.func.isRequired,
     addUser: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
   };
 
   componentDidMount() {
@@ -38,22 +41,28 @@ class UsersPage extends Component {
   }
 
   render() {
-    const { userList } = this.props;
+    const { userList, isLoading } = this.props;
+
     return (
       <div className="users-page">
         <Breadcrumbs items={[{ text: 'Current page'}]}/>
         <SportInfo type="Cycling" mode="Advanced" route="30 miles"/>
 
         <div className="users-page__table-wrapper">
-          {/* I could have used an external library like react-table */}
-          <Table
-            columns={columns}
-            data={userList}
-            keyField="email"
-            onRemove={(data) => {
-              this.props.removeUser(data.email);
-            }}
-          />
+          {
+            isLoading ? <div className="users-page__loading"><Loading/></div>
+            :
+            /* I could have used an external library like react-table */
+            <Table
+              columns={columns}
+              data={userList}
+              keyField="email"
+              onRemove={(data) => {
+                this.props.removeUser(data.email);
+              }}
+            />
+          }
+
         </div>
         <AddUser onSubmit={this.props.addUser} />
       </div>
