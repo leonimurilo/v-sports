@@ -13,7 +13,7 @@ function InputInstruction({ showInstruction, instruction, error, touched }) {
   if (touched && error) {
     return (
       <div className="input-instruction input-instruction--error">
-        <span>{instruction}</span>
+        <span>{error}</span>
       </div>
     )
   }
@@ -22,8 +22,10 @@ function InputInstruction({ showInstruction, instruction, error, touched }) {
 }
 
 InputInstruction.propTypes = {
-  message: PropTypes.string,
-  isError: PropTypes.bool,
+  instruction: PropTypes.string,
+  showInstruction: PropTypes.bool,
+  error: PropTypes.string,
+  touched: PropTypes.bool,
 }
 
 export default InputInstruction;
