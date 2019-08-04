@@ -8,4 +8,4 @@ export const getUsers = {
 }
 
 export const removeUser = email => createAction(REMOVE_USER, { email });
-export const values = email => createAction(ADD_USER, { email });
+export const addUser = values => createAction(ADD_USER, { values });
