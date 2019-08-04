@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import InputInstruction from 'components/InputInstruction';
 
 import './style.scss';
 
@@ -46,7 +47,10 @@ class CheckboxGroup extends React.Component {
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func.isRequired,
     label: PropTypes.string,
-    error: PropTypes.object,
+    error: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string,
+    ]),
     touched: PropTypes.oneOfType([
       PropTypes.bool,
       PropTypes.array,
@@ -77,7 +81,7 @@ class CheckboxGroup extends React.Component {
   };
 
   render() {
-    const { value, label, children } = this.props;
+    const { value, label, children, touched, error } = this.props;
 
     return (
       <div className="checkbox-group">
@@ -95,6 +99,7 @@ class CheckboxGroup extends React.Component {
             })}
           </div>
         </fieldset>
+        <InputInstruction touched={touched} error={error}/>
       </div>
     );
   }

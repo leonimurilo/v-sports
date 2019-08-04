@@ -57,6 +57,23 @@ export default class AddUser extends Component {
     ) {
       errors.email = 'Invalid email address';
     }
+
+    if (!values.username) {
+      errors.username = 'Required';
+    } else if (values.username.length < 8) {
+      errors.username = 'Must have at least 8 characters';
+    }
+
+    if (!values.name) {
+      errors.name = 'Required';
+    } else if (values.name.length < 3) {
+      errors.name = 'Must have at least 3 characters';
+    }
+
+    if (values.dayOfWeek.length < 1) {
+      errors.dayOfWeek = 'At least one day must be selected';
+    }
+
     return errors;
   }
 
