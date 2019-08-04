@@ -108,6 +108,7 @@ export default class AddUser extends Component {
                   <TextInput
                     name="name"
                     label="Name"
+                    instruction="Instructions to show on input focus."
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
@@ -117,6 +118,7 @@ export default class AddUser extends Component {
                   <TextInput
                     name="email"
                     label="E-mail"
+                    instruction="Instructions to show on input focus."
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
@@ -128,6 +130,7 @@ export default class AddUser extends Component {
                   <TextInput
                     name="city"
                     label="City"
+                    instruction="Instructions to show on input focus."
                     optional
                     onChange={handleChange}
                     onBlur={handleBlur}
