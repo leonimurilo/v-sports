@@ -93,7 +93,7 @@ export default class AddUser extends Component {
             dayOfWeek: ['Sun'],
           }}
           validate={this.validateFields}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values) => {
             this.props.onSubmit(values);
           }}
         >

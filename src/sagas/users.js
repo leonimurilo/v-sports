@@ -39,7 +39,6 @@ export function* getUsersAsync() {
     yield put(getUsers.success(finalData));
   } catch (error) {
     yield put(getUsers.failure(error));
-    console.error({error});
   }
 }
 
