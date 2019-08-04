@@ -38,6 +38,16 @@ export default [
   {
     header: 'Day of the week',
     acessor: 'dayOfWeek',
+    render: options => {
+      if (options && Array.isArray(options)) {
+        if (options.length === 7) {
+          return (<span>Every day</span>)
+        }
+        return (<span>{options.join(', ')}</span>)
+      }
+
+      return null;
+    },
   },
   {
     header: 'Posts',
