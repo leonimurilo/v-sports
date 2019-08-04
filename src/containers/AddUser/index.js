@@ -92,11 +92,13 @@ export default class AddUser extends Component {
             setFieldTouched,
             setFieldValue,
           }) => (
-            <form onSubmit={handleSubmit}>
-              <div>
-                <div>
+            <form className="add-user__content" onSubmit={handleSubmit}>
+              <div className="add-user__fields">
+                <div className="add-user__row">
                   <TextInput
                     name="username"
+                    label="Username"
+                    instruction="Instructions to show on input focus."
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.username}
@@ -105,6 +107,7 @@ export default class AddUser extends Component {
                   />
                   <TextInput
                     name="name"
+                    label="Name"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.name}
@@ -113,6 +116,7 @@ export default class AddUser extends Component {
                   />
                   <TextInput
                     name="email"
+                    label="E-mail"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
@@ -120,15 +124,17 @@ export default class AddUser extends Component {
                     touched={touched}
                   />
                 </div>
-                <div>
-                  <input
-                    type="text"
+                <div className="add-user__row">
+                  <TextInput
                     name="city"
+                    label="City"
+                    optional
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.city}
+                    errors={errors}
+                    touched={touched}
                   />
-                  {errors.city && touched.city && errors.city}
 
                   <RadioButtonGroup
                     id="rideInGroup"
@@ -154,9 +160,9 @@ export default class AddUser extends Component {
                 </div>
               </div>
 
-              <div>
-              <button className="button" type="submit" disabled={isSubmitting}>Submit</button>
-              <button className="button" type="button" disabled={isSubmitting} onClick={handleReset}>Discard</button>
+              <div className="add-user__menu">
+                <button className="button u-margin-right-small" type="submit" disabled={isSubmitting}>Save</button>
+                <button className="button button--sec" type="button" disabled={isSubmitting} onClick={handleReset}>Discard</button>
               </div>
             </form>
           )}

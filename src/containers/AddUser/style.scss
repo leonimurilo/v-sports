@@ -1,6 +1,54 @@
 @import '../../styles/main';
 
 .add-user {
-  padding: 3rem;
+  padding: 3rem 20rem;
+
+  @include respond(tab-land) {
+    padding: 3rem 16rem;
+  }
+
+  @include respond(tab-port) {
+    padding: 3rem 10rem;
+  }
+
+  @include respond(phone) {
+    padding: 3rem 6rem;
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    @include respond(tab-port) {
+      flex-direction: column;
+    }
+
+  }
+
+  &__row {
+    width: 48%;
+
+    @include respond(tab-port) {
+      width: 100%;
+    }
+
+    & > .text-input {
+      max-width: 90%;
+
+      @include respond(tab-port) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  &__menu {
+    margin-top: 2rem;
+  }
 
 }
