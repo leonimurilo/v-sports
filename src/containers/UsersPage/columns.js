@@ -20,7 +20,16 @@ export default [
   {
     header: 'City',
     acessor: 'city',
-    render: (city, { address }) => (<a rel="noopener noreferrer" target="_blank" href={formatMapsURL(address.geo.lat, address.geo.lng)} >{city}</a>),
+    render: (city, { address }) => {
+      if (address.city) {
+        if (address && address.geo) {
+          return (<a rel="noopener noreferrer" target="_blank" href={formatMapsURL(address.geo.lat, address.geo.lng)} >{city}</a>);
+        }
+        return <span>{city}</span>
+      }
+
+      return null;
+    },
   },
   {
     header: 'Ride in group',

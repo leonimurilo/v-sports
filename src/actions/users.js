@@ -16,7 +16,7 @@ const resolveNewUser = values => {
   return ({
     id: 1,
     name: values.name,
-    username: values.usernsame,
+    username: values.username,
     email: values.email,
     address: {
       street: null,
@@ -27,11 +27,7 @@ const resolveNewUser = values => {
     },
     phone: null,
     website: null,
-    company: {
-      name: null,
-      catchPhrase: null,
-      bs: null
-    },
+    company: null,
     rideInGroup: values.rideInGroup,
     dayOfWeek: values.dayOfWeek,
     posts: 0,
