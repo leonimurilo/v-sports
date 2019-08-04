@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { getUsers, removeUser } from 'actions/users';
+import { getUsers, removeUser, addUser } from 'actions/users';
 import { selectUserList } from 'reducers';
 import Table from 'components/Table';
 import SportInfo from 'components/SportInfo';
@@ -20,6 +20,7 @@ const enhance = compose(
   })),
   connect(null, dispatch => ({
     getUsers: () => dispatch(getUsers.request()),
+    addUser: values => dispatch(addUser(values)),
     removeUser: email => dispatch(removeUser(email)),
   }))
 );
@@ -29,6 +30,7 @@ class UsersPage extends Component {
     getUsers: PropTypes.func.isRequired,
     userList: PropTypes.array.isRequired, //todo: add shaped proptype
     removeUser: PropTypes.func.isRequired,
+    addUser: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -53,7 +55,7 @@ class UsersPage extends Component {
             }}
           />
         </div>
-        <AddUser/>
+        <AddUser onSubmit={this.props.addUser} />
       </div>
     )
   }

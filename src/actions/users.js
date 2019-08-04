@@ -1,4 +1,4 @@
-import { GET_USERS, REMOVE_USER } from 'constants/actionTypes';
+import { GET_USERS, ADD_USER, REMOVE_USER } from 'constants/actionTypes';
 import { createAction } from './utils';
 
 export const getUsers = {
@@ -8,3 +8,4 @@ export const getUsers = {
 }
 
 export const removeUser = email => createAction(REMOVE_USER, { email });
+export const values = email => createAction(ADD_USER, { email });

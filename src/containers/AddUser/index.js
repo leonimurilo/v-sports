@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Formik, Field } from 'formik';
 import { Checkbox, CheckboxGroup } from 'components/Checkbox';
 import { RadioButton, RadioButtonGroup } from 'components/RadioButton';
@@ -24,6 +24,9 @@ const rideOptions = [
 ];
 
 export default class AddUser extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  }
 
   renderRideInGroup = () => {
     return rideOptions.map(opt => (
@@ -91,10 +94,7 @@ export default class AddUser extends Component {
           }}
           validate={this.validateFields}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 1000);
+            this.props.onSubmit(values);
           }}
         >
           {({
