@@ -8,4 +8,34 @@ export const getUsers = {
 }
 
 export const removeUser = email => createAction(REMOVE_USER, { email });
-export const addUser = values => createAction(ADD_USER, { values });
+export const addUser = values => createAction(ADD_USER, { user: resolveNewUser(values) });
+
+
+
+const resolveNewUser = values => {
+  return ({
+    id: 1,
+    name: values.name,
+    username: values.usernsame,
+    email: values.email,
+    address: {
+      street: null,
+      suite: null,
+      city: values.city,
+      zipcode: '',
+      geo: null
+    },
+    phone: null,
+    website: null,
+    company: {
+      name: null,
+      catchPhrase: null,
+      bs: null
+    },
+    rideInGroup: values.rideInGroup,
+    dayOfWeek: values.dayOfWeek,
+    posts: 0,
+    albums: 0,
+    photos: 0
+  });
+}
