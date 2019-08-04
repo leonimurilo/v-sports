@@ -69,15 +69,18 @@ class UsersPage extends Component {
       <div className="users-page">
         <Breadcrumbs items={[{ text: 'Current page'}]}/>
         <SportInfo type="Cycling" mode="Advanced" route="30 miles"/>
-        <div className="text-input">
-          <input
-            type="text"
-            name={name}
-            className="text-input__input"
-            onChange={e => { this.setState({ filter: e.target.value })}}
-            value={filter}
-          />
-
+        <div className="users-page__heading">
+          <div className="text-input users-page__filter">
+            <h1 className="users-page__title">Users</h1>
+            <div className="users-page__line"/>
+            <input
+              type="text"
+              name={name}
+              className="text-input__input"
+              onChange={e => { this.setState({ filter: e.target.value })}}
+              value={filter}
+            />
+          </div>
         </div>
 
         <div className="users-page__table-wrapper">
