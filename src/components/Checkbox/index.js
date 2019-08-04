@@ -99,7 +99,7 @@ class CheckboxGroup extends React.Component {
             })}
           </div>
         </fieldset>
-        <InputInstruction touched={touched} error={error}/>
+        <InputInstruction touched={!!touched} error={error}/>
       </div>
     );
   }
