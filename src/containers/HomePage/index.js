@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faBicycle } from '@fortawesome/free-solid-svg-icons';
 
 import './style.scss';
 
@@ -13,10 +13,11 @@ class HomePage extends Component {
   render() {
     return (
       <div className="home-page">
-          <Link className="home-page__link" to="users">
-            <FontAwesomeIcon className="home-page__icon" icon={faUsers} />
-            <span className="home-page__link-text">View users list</span>
-          </Link>
+        <h2 className="h2">Select a sport</h2>
+        <Link className="home-page__link" to="sports/1">
+          <FontAwesomeIcon className="home-page__icon" icon={faBicycle} />
+          <span className="home-page__link-text">Cycling</span>
+        </Link>
       </div>
     )
   }

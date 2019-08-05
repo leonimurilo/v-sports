@@ -30,7 +30,7 @@ const enhance = compose(
   }))
 );
 
-class UsersPage extends Component {
+class SportPage extends Component {
   static propTypes = {
     getUsers: PropTypes.func.isRequired,
     userList: PropTypes.array.isRequired, //todo: add shaped proptype
@@ -116,4 +116,4 @@ class UsersPage extends Component {
   }
 }
 
-export default enhance(UsersPage);
+export default enhance(SportPage);

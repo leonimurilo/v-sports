@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 
 import Header from "components/Header";
 import HomePage from "containers/HomePage";
-import UsersPage from "containers/UsersPage";
+import SportPage from "containers/SportPage";
 
 import './style.scss';
 
@@ -16,7 +16,8 @@ class App extends Component {
         <div className="page-container">
           <Switch>
             <Route component={HomePage} exact path="/" />
-            <Route component={UsersPage} path="/users" />
+            <Route component={SportPage} path="/sports" />
+            {/* TODO: Page not found component */}
           </Switch>
         </div>
       </div>
