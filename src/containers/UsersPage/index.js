@@ -70,16 +70,19 @@ class UsersPage extends Component {
         <Breadcrumbs items={[{ text: 'Current page'}]}/>
         <SportInfo type="Cycling" mode="Advanced" route="30 miles"/>
         <div className="users-page__heading">
-          <div className="text-input users-page__filter">
-            <h1 className="users-page__title">Users</h1>
+          <div className="users-page__filter">
+            <h2 className="h1">Users</h2>
             <div className="users-page__line"/>
-            <input
-              type="text"
-              name={name}
-              className="text-input__input"
-              onChange={e => { this.setState({ filter: e.target.value })}}
-              value={filter}
-            />
+            <div className="users-page__input-wrapper">
+              <input
+                type="text"
+                name={name}
+                placeholder="Filter table content"
+                className="text-input__input"
+                onChange={e => { this.setState({ filter: e.target.value })}}
+                value={filter}
+              />
+            </div>
           </div>
         </div>
 
@@ -98,6 +101,12 @@ class UsersPage extends Component {
             />
           }
 
+        </div>
+        <div className="users-page__registration">
+          <div className="users-page__filter">
+            <h2 className="h1">Registration</h2>
+            <div className="users-page__line"/>
+          </div>
         </div>
         <AddUser onSubmit={this.props.addUser} />
       </div>

@@ -16,4 +16,28 @@
     height: 100%;
   }
 
+  &__heading, &__registration {
+    margin: 3rem;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__input-wrapper {
+    width: 25vw;
+  }
+
+  &__filter {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+
+  &__line {
+    height: 3px;
+    flex: 1;
+    background-color: darken($color-gray-light, 3%);
+    margin: 0 6rem;
+  }
+
 }
