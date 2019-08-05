@@ -1,5 +1,24 @@
 @import '../../styles/main';
 
 .home-page {
+  border-top: 4px solid $color-gray;
   padding: 3rem;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+
+    &:hover {
+      & > * {
+        color: darken($color-primary, 15%);
+      }
+    }
+  }
+
+  &__icon {
+    font-size: 3rem;
+    color: $color-primary;
+    margin-right: 1rem;
+  }
 }

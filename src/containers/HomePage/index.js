@@ -1,22 +1,10 @@
-// import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-import { compose } from 'recompose';
 import { Link } from 'react-router-dom';
-
-// import {
-// } from 'selectors/';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
 
 import './style.scss';
 
-const enhance = compose(
-  // connect(state => ({
-    // selectors
-  // })),
-  // connect(null, (dispatch, { geolocation }) => ({
-    // action creators
-  // }))
-);
 
 class HomePage extends Component {
   static propTypes = {
@@ -24,11 +12,14 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div>
-        <Link to="users">View users list</Link>
+      <div className="home-page">
+          <Link className="home-page__link" to="users">
+            <FontAwesomeIcon className="home-page__icon" icon={faUsers} />
+            <span className="home-page__link-text">View users list</span>
+          </Link>
       </div>
     )
   }
 }
 
-export default enhance(HomePage);
+export default HomePage;
