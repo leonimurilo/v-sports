@@ -7,6 +7,38 @@ Clone/Download it here: https://github.com/leonimurilo/v-sports-server
 3. `npm start`
 4. A browser tab will open and the application will start running
 
+### Criterias completed:
+
+1. User table content shall have information from the following endpoint:
+**Done.**
+2. E-mail column shall link to user’s e-mail address
+**Done.**
+3. City column shall link to Google Maps link with the correct latitude and longitude that is
+ specified in the endpoint
+**Done.**
+4. Ride in Group and Day of the week columns shall be a different endpoint created by you
+**Done.**
+5. Posts, Albums and Photos shall be a count of items from the following endpoints ...
+**Done.**
+6. While hovering any row a trash icon must be shown in order to remove the row entry (data
+ doesn’t need to persist)
+**Done.**
+7. Registration form shall follow the specification on the UI for the mouse over elements, focused field and selected options
+**Done.**
+8. Saving a new user the application shall add he/she to the end of the Users' table
+ - Do not include link to Google Maps for new users
+ - Posts, Albums and Photos count shall be set 0 for new users
+**Done.**
+9. Optional features:
+ A. Filter User table content by any column using the filter field
+**Done.**
+ B. Open a new page by clicking on each user’s Posts or Albums count that show posts or
+ albums with its respective comments and photos
+**Not finished**. Since this is very time demanding, I haven't done this step, but here is an axplanation of how I would do it:
+I would have used the render method of the Table component to render a custom cell (as I have done for the other columns) containing a React router's Link that would link to another page (albums or posts) by specifying the chosen user (/users/posts OR /users/albums).
+
+I would have built components for Posts, albums, photos and comments like I've done with the sport page.
+
 ## Initial Machine Setup (required)
 
 1. **Install [Node 8.0.0 or greater](https://nodejs.org)**
