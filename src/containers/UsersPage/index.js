@@ -6,6 +6,7 @@ import { getUsers, removeUser, addUser } from 'actions/users';
 import { selectUserList, isLoadingSelector } from 'reducers';
 import Table from 'components/Table';
 import SportInfo from 'components/SportInfo';
+import RegistrationGuide from 'components/RegistrationGuide';
 import Breadcrumbs from 'components/Breadcrumbs';
 import Loading from 'components/Loading';
 import AddUser from 'containers/AddUser';
@@ -108,6 +109,7 @@ class UsersPage extends Component {
             <div className="users-page__line"/>
           </div>
         </div>
+        <RegistrationGuide/>
         <AddUser onSubmit={this.props.addUser} />
       </div>
     )

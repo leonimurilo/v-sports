@@ -22,8 +22,15 @@
     flex-direction: row;
   }
 
+  &__registration {
+    margin-top: 8rem;
+  }
+
   &__input-wrapper {
     width: 25vw;
+    @include respond(tab-port) {
+      width: 35vw;
+    }
   }
 
   &__filter {
